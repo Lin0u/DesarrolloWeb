@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>FitExpress - Personalización</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding-top: 40px;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: gray;
+            margin-bottom: 30px;
+        }
+
+        .bowl-box {
+            background: white;
+            border: 1px solid #ccc;
+            padding: 30px;
+            width: 400px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .bowl-box h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .ingredient-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .ingredient-list label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .summary {
+            border: 1px solid #000;
+            padding: 10px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            font-size: 14px;
+            color: white;
+            background-color: #3ba9f4;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #228ad1;
+        }
+    </style>
+</head>
+<body>
+    <div class="bowl-box">
+        <h2>Personaliza tu Bowl</h2>
+        <p>Ingredientes (max 3):</p>
+
+        <form>
+            <div class="ingredient-list">
+                <label><input type="checkbox" name="ingrediente"> Quinoa</label>
+                <label><input type="checkbox" name="ingrediente"> Atún</label>
+                <label><input type="checkbox" name="ingrediente"> Tomate Cherry</label>
+                <label><input type="checkbox" name="ingrediente"> Salmon</label>
+                <label><input type="checkbox" name="ingrediente" checked> Arroz</label>
+                <label><input type="checkbox" name="ingrediente" checked> Ensalada</label>
+                <label><input type="checkbox" name="ingrediente"> Pollo</label>
+                <label><input type="checkbox" name="ingrediente"> Fideos</label>
+            </div>
+
+            <div class="summary">
+                <p><b>Tu pedido:</b> Bowl Almuerzo</p>
+                <p><b>Ingredientes:</b> Arroz, Ensalada</p>
+                <p><b>Costo Estimado:</b> $12.000</p>
+            </div>
+
+            <button type="submit" class="btn">Confirmar Pedido</button>
+        </form>
+    </div>
+</body>
+</html>
