@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recomendaciones - FitExpress</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f9f9f9;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .productos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 220px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin: 10px 0 5px;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .card button {
+      margin: 15px 0;
+      padding: 10px 20px;
+      background: #007bff;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .card button:hover {
+      background: #0056b3;
+    }
+
+    .acciones {
+      margin-top: 20px;
+    }
+
+    .acciones button {
+      margin: 0 5px;
+      padding: 10px 20px;
+      background: #007bff;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .acciones button:hover {
+      background: #0056b3;
+    }
+
+    .mensaje {
+      margin-top: 20px;
+      padding: 15px;
+      background: #e9ffe9;
+      border: 1px solid #ccc;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Descubre tu próximo Bowl favorito</h1>
+
+  <div class="productos">
+    <div class="card">
+      <img src="https://via.placeholder.com/220x150.png?text=Pollo+y+Vegetales" alt="Bowl de Pollo">
+      <h3>Bowl de Pollo y Vegetales</h3>
+      <p>$9.800</p>
+      <button onclick="agregar('Bowl de Pollo y Vegetales')">Añadir</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/220x150.png?text=Salmón+Energía" alt="Bowl de Salmón">
+      <h3>Bowl de Salmón Energía</h3>
+      <p>$10.500</p>
+      <button onclick="agregar('Bowl de Salmón Energía')">Añadir</button>
+    </div>
+    <div class="card">
+      <img src="https://via.placeholder.com/220x150.png?text=Tofu+Equilibrio" alt="Bowl de Tofu">
+      <h3>Bowl Tofu Budha Equilibrio</h3>
+      <p>$8.900</p>
+      <button onclick="agregar('Bowl Tofu Budha Equilibrio')">Añadir</button>
+    </div>
+  </div>
+
+  <p style="color:#555; font-size:14px;">
+    Sugerencia basada en su historial <br>
+    <a href="#">Ver más detalles de recomendación</a>
+  </p>
+
+  <div class="acciones">
+    <button onclick="salir()">Salir</button>
+  </div>
+
+  <div class="mensaje" id="mensaje"></div>
+
+  <script>
+    function agregar(producto) {
+      const mensaje = document.getElementById("mensaje");
+      mensaje.innerHTML = `✅ ${producto} fue agregado a la canasta con éxito. <br><br>
+        <button onclick="volverMenu()">Sí</button>
+        <button onclick="ocultar()">No</button>`;
+      mensaje.style.display = "block";
+    }
+
+    function volverMenu() {
+      alert("Volviendo al menú principal...");
+      document.getElementById("mensaje").style.display = "none";
+    }
+
+    function ocultar() {
+      document.getElementById("mensaje").style.display = "none";
+    }
+
+    function salir() {
+      alert("Saliendo de recomendaciones...");
+    }
+  </script>
+
+</body>
+</html>
