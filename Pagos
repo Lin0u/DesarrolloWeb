@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitExpress - Pago Seguro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 14px;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #28a745;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    .resultado {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .error { color: red; }
+    .exito { color: green; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pago Seguro</h2>
+
+    <form id="paymentForm">
+      <label for="metodo">Método de Pago</label>
+      <select id="metodo" name="metodo" required>
+        <option value="">Seleccione...</option>
+        <option value="Tarjeta">Tarjeta de Crédito/Débito</option>
+        <option value="PayPal">PayPal</option>
+      </select>
+
+      <div id="tarjetaFields">
+        <label for="cardNumber">Número de Tarjeta</label>
+        <input type="text" id="cardNumber" maxlength="16" placeholder="0000 0000 0000 0000">
+
+        <label for="cardName">Nombre del Titular</label>
+        <input type="text" id="cardName" placeholder="Ej: Juan Pérez">
+
+        <label for="expiry">Vencimiento (MM/AA)</label>
+        <input type="text" id="expiry" maxlength="5" placeholder="MM/AA">
+
+        <label for="cvc">CVC</label>
+        <input type="text" id="cvc" maxlength="4" placeholder="123">
+      </div>
+
+      <button type="submit">Confirmar y Pagar</button>
+    </form>
+
+    <div id="result" class="resultado"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("paymentForm");
+    const metodoPago = document.getElementById("metodo");
+    const tarjetaFields = document.getElementById("tarjetaFields");
+    const result = document.getElementById("result");
+
+    // Mostrar/ocultar campos de tarjeta según método
+    metodoPago.addEventListener("change", () => {
+      tarjetaFields.style.display = metodoPago.value === "Tarjeta" ? "block" : "none";
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      result.textContent = "Procesando pago... ⏳";
+
+      // Simular espera de servidor
+      setTimeout(() => {
+        // Generar respuesta aleatoria: éxito o error
+        const exito = Math.random() > 0.5; // 50% de probabilidad
+
+        if (exito) {
+          result.innerHTML = `<p class="exito">✅ ¡Compra realizada con éxito!<br>
+            ¿Desea descargar el comprobante?<br>
+            <button onclick="alert('Descargando comprobante...')">Ok</button>
+          </p>`;
+        } else {
+          result.innerHTML = `<p class="error">❌ Error en la compra<br>
+            <button onclick="alert('Intente nuevamente')">Ok</button>
+          </p>`;
+        }
+      }, 1500); // 1.5 segundos para simular procesamiento
+    });
+  </script>
+</body>
+</html>
