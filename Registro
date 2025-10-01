@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>FitExpress - Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding-top: 40px;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: gray;
+            margin-bottom: 30px;
+        }
+
+        .register-box {
+            background: white;
+            border: 1px solid #ccc;
+            padding: 30px;
+            width: 320px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .register-box h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 15px 0;
+        }
+
+        .input-box {
+            margin-bottom: 15px;
+        }
+
+        .input-box label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            font-size: 14px;
+            color: white;
+            background-color: #3ba9f4;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #228ad1;
+        }
+
+        .login-link {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .login-link a {
+            color: #3ba9f4;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-box">
+        <h2>Registro</h2>
+        <hr>
+
+        <form>
+            <div class="input-box">
+                <label for="username">User Name:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="input-box">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="input-box">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="input-box">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+
+            <button type="submit" class="btn">SIGN UP</button>
+
+            <hr>
+
+            <div class="login-link">
+                <p>¿Ya tienes cuenta? <a href="HTMLlogin.html">Inicia sesión</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
