@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mis direcciones</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    .contenedor {
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 400px;
+      background: white;
+      border-radius: 8px;
+    }
+    h3 {
+      margin-top: 0;
+    }
+    .btn-principal {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .direccion {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+    .direccion .acciones {
+      margin-top: 8px;
+    }
+    .acciones button {
+      background: none;
+      border: 1px solid #007bff;
+      color: #007bff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-right: 5px;
+      cursor: pointer;
+    }
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      width: 300px;
+    }
+    .modal-content h4 {
+      margin-top: 0;
+    }
+    .modal-content button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <h3>Mis direcciones</h3>
+    <button class="btn-principal" onclick="abrirModal('add')">Añadir nueva dirección</button>
+
+    <div class="direccion">
+      <strong>Principal</strong><br>
+      Calle: Av. Siempreviva 742 <br>
+      Comuna: Santiago <br>
+      Región: Metropolitana
+      <div class="acciones">
+        <button>Editar</button>
+        <button onclick="abrirModal('delete')">Eliminar</button>
+      </div>
+    </div>
+
+    <div class="direccion">
+      Calle: Calle Falsa 123 <br>
+      Comuna: Ñuñoa <br>
+      Región: Metropolitana
+      <div class="acciones">
+        <button>Editar</button>
+        <button onclick="abrirModal('delete')">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h4>Mis direcciones</h4>
+      <p id="mensaje"></p>
+      <button onclick="cerrar()">Ok</button>
+    </div>
+  </div>
+
+  <script>
+    function abrirModal(tipo) {
+      let mensaje = document.getElementById("mensaje");
+      if (tipo === 'add') {
+        // simulamos éxito o error
+        let exito = Math.random() > 0.5;
+        if (exito) {
+          mensaje.textContent = "Ubicación añadida exitosamente";
+        } else {
+          mensaje.textContent = "Error de ubicación";
+        }
+      }
+      if (tipo === 'delete') {
+        mensaje.textContent = "Se eliminó exitosamente esta dirección";
+      }
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function cerrar() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
