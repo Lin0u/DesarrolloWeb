@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitExpress - Puntos de Canje</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 80%;
+      background: #fff;
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .points {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .products {
+      display: flex;
+      gap: 20px;
+      justify-content: space-around;
+    }
+
+    .card {
+      width: 30%;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      text-align: center;
+      padding: 15px;
+      background: #fafafa;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .points-cost {
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    button {
+      background: #008cff;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:hover {
+      background: #006bbf;
+    }
+
+    /* Ventana emergente */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      min-width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Puntos de canje</h2>
+    <p class="points">Cantidad de puntos total : <span id="totalPuntos">50000</span></p>
+    <h3>Disponible:</h3>
+
+    <div class="products">
+      <div class="card">
+        <img src="https://via.placeholder.com/200x150?text=Pollo+%26+Vegetales" alt="Bowl de Pollo">
+        <p>Bowl de Pollo y Vegetales</p>
+        <p class="points-cost">9999 pts</p>
+        <button onclick="canjear(9999)">Canjear</button>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/200x150?text=Salmon+Energia" alt="Bowl de Salmón">
+        <p>Bowl de Salmón Energía</p>
+        <p class="points-cost">100000 pts</p>
+        <button onclick="canjear(100000)">Canjear</button>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/200x150?text=Tofu+Budha" alt="Bowl Tofu">
+        <p>Bowl Tofu Budha Equilibrio</p>
+        <p class="points-cost">77777 pts</p>
+        <button onclick="canjear(77777)">Canjear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <p id="mensaje"></p>
+      <button onclick="cerrarModal()">Ok</button>
+    </div>
+  </div>
+
+  <script>
+    let puntos = 50000; // puntos iniciales
+
+    function canjear(costo) {
+      const modal = document.getElementById("modal");
+      const mensaje = document.getElementById("mensaje");
+
+      if (puntos >= costo) {
+        puntos -= costo;
+        document.getElementById("totalPuntos").textContent = puntos;
+        mensaje.textContent = "✅ ¡Canje exitoso!";
+      } else {
+        mensaje.textContent = "❌ Puntos insuficientes";
+      }
+
+      modal.style.display = "flex";
+    }
+
+    function cerrarModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
