@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>FitExpress - Portal de Pagos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f5f9;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    .contenedor {
+      margin-top: 40px;
+      width: 500px;
+    }
+    .ventana {
+      border-radius: 12px;
+      padding: 25px;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .titulo {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 12px;
+    }
+    .boton {
+      display: inline-block;
+      background: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .boton:hover {
+      background: #0056b3;
+    }
+    .boleta {
+      border-radius: 12px;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .boleta h2 {
+      margin-top: 0;
+      color: #007bff;
+      font-size: 20px;
+    }
+    .boleta p {
+      margin: 6px 0;
+      font-size: 14px;
+      color: #444;
+    }
+    .mensaje-error {
+      border-radius: 12px;
+      padding: 20px;
+      background: #ffe5e5;
+      color: #a80000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <!-- Portal de pagos -->
+    <div class="ventana">
+      <div class="titulo">Portal de pagos</div>
+      <p>¡Compra ya realizada!<br>¿Desea descargar el comprobante?</p>
+      <a href="#boleta-exitosa" class="boton">Ok</a>
+    </div>
+
+    <!-- Escenario 1: Boleta Exitosa -->
+    <div id="boleta-exitosa" class="boleta">
+      <h2>Boleta Electrónica</h2>
+      <p><b>Dirección:</b> xxxxxxxxx</p>
+      <p><b>Email:</b> xxxx@gmail.com</p>
+      <p><b>Fecha de emisión:</b> xx/xx/xx</p>
+      <p><b>Detalles:</b></p>
+      <ul>
+        <li>Producto 1</li>
+        <li>Producto 2</li>
+      </ul>
+      <p><b>Precio total:</b> $xxxx</p>
+      <p><b>Medio de pago:</b> Tarjeta xxxx</p>
+      <p><i>¡Gracias por su compra!</i></p>
+    </div>
+
+    <!-- Escenario 2: Error en boleta -->
+    <div id="boleta-error" class="mensaje-error">
+      <p><b>Error:</b> No se pudo generar la boleta, por favor inténtelo de nuevo.</p>
+      <a href="#" class="boton">Okey</a>
+    </div>
+  </div>
+
+</body>
+</html>
