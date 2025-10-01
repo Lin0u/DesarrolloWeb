@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suscripción Semanal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .contenedor {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .contenido {
+      display: flex;
+      gap: 20px;
+    }
+
+    .producto {
+      flex: 1;
+    }
+
+    .producto img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .info-pago {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .opciones {
+      flex: 1;
+    }
+
+    .dias {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .dias button {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+
+    .dias button.active {
+      background: #007bff;
+      color: #fff;
+    }
+
+    .opciones label {
+      display: block;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .resumen {
+      margin-top: 15px;
+      padding: 10px;
+      border: 1px solid #eee;
+      background: #fafafa;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .resumen div {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+    }
+
+    button.confirmar {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button.confirmar:hover {
+      background: #0056b3;
+    }
+
+    .mensaje {
+      margin-top: 20px;
+      padding: 15px;
+      background: #e9ffe9;
+      border: 1px solid #ccc;
+      display: none;
+      text-align: center;
+    }
+
+    .mensaje.error {
+      background: #ffe9e9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contenedor">
+    <h2>Configura tu Suscripción Semanal</h2>
+
+    <div class="contenido">
+      <!-- Producto -->
+      <div class="producto">
+        <img src="https://via.placeholder.com/300x200.png?text=Bowl+Pollo+y+Vegetales" alt="Bowl">
+        <h3>Bowl de Pollo y Vegetales</h3>
+        <p>$9.800 CLP</p>
+        <div class="info-pago">💳 Tarjeta Visa •••• 1234</div>
+        <button onclick="alert('Función para cambiar método de pago')">Cambiar Método</button>
+      </div>
+
+      <!-- Opciones -->
+      <div class="opciones">
+        <p><strong>¿Cuándo quieres recibirlo?</strong></p>
+        <div class="dias" id="dias">
+          <button data-dia="L">L</button>
+          <button data-dia="M">M</button>
+          <button data-dia="X">X</button>
+          <button data-dia="J">J</button>
+          <button data-dia="V">V</button>
+          <button data-dia="S">S</button>
+          <button data-dia="D">D</button>
+        </div>
+        <label><input type="checkbox" checked> Recurrente cada semana</label>
+
+        <div class="resumen">
+          <div><span>Bowl (x2 Semanas)</span> <span>$19.600</span></div>
+          <div><span>Descuento Suscripción</span> <span>-1.960 (10%)</span></div>
+          <div><strong>Total semanal</strong> <strong>$17.640</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="confirmar" onclick="confirmar()">Confirmar Suscripción</button>
+    <div class="mensaje" id="mensaje"></div>
+  </div>
+
+  <script>
+    const botonesDias = document.querySelectorAll("#dias button");
+    botonesDias.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+      });
+    });
+
+    function confirmar() {
+      const mensaje = document.getElementById("mensaje");
+
+      // Simulación de éxito o error
+      const exito = Math.random() > 0.3; // 70% prob éxito
+
+      if (exito) {
+        mensaje.textContent = "¡Suscripción exitosa! Se te cobrará semanalmente.";
+        mensaje.classList.remove("error");
+      } else {
+        mensaje.textContent = "Error en la suscripción, inténtelo de nuevo.";
+        mensaje.classList.add("error");
+      }
+
+      mensaje.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
