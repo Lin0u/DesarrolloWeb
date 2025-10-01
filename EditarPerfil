@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi perfil</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .perfil {
+      border: 1px solid #ccc;
+      padding: 20px;
+      width: 350px;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .perfil h3 {
+      text-align: center;
+    }
+    .perfil .icono {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .perfil .icono img {
+      width: 60px;
+      height: 60px;
+    }
+    .campo {
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button {
+      background: #008cff;
+      color: white;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #006bbf;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      min-width: 250px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="perfil">
+    <div class="icono">
+      <!-- Mini logo de perfil -->
+      <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="icono perfil">
+    </div>
+    <h3>Mi perfil</h3>
+
+    <div class="campo">
+      <span>Nombre: xxxxxx</span>
+      <button onclick="guardar(true)">Editar</button>
+    </div>
+
+    <div class="campo">
+      <span>Correo electrónico: xxxxxx</span>
+      <button onclick="guardar(false)">Editar</button>
+    </div>
+
+    <div class="campo">
+      <span>Número: xxxxxx</span>
+      <button onclick="guardar(true)">Editar</button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <p id="mensaje"></p>
+      <button onclick="cerrar()">Ok</button>
+    </div>
+  </div>
+
+  <script>
+    function guardar(exito) {
+      let mensaje = document.getElementById("mensaje");
+      if (exito) {
+        mensaje.textContent = "✅ Cambio exitoso";
+      } else {
+        mensaje.textContent = "❌ Error, inténtelo de nuevo";
+      }
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function cerrar() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+</body>
+</html>
