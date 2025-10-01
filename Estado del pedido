@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estado de mi pedido - FitExpress</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      width: 600px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 25px;
+      color: #333;
+    }
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin: 30px 0;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      right: 10%;
+      height: 6px;
+      background: #ccc;
+      z-index: 0;
+    }
+    .estado {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+    .estado-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #fff;
+      background: #ccc;
+      transition: background 0.3s;
+    }
+    .estado.active .estado-icon {
+      background: #28a745;
+    }
+    .estado-label {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #555;
+    }
+    .mensaje {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      background: #e9ecef;
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Estado de mi pedido</h2>
+
+    <div class="timeline">
+      <div class="estado" id="cocinando" onclick="cambiarEstado(0)">
+        <div class="estado-icon">👨‍🍳</div>
+        <div class="estado-label">Cocinándose</div>
+      </div>
+      <div class="estado" id="despacho" onclick="cambiarEstado(1)">
+        <div class="estado-icon">⏳</div>
+        <div class="estado-label">Esperando despacho</div>
+      </div>
+      <div class="estado" id="enviado" onclick="cambiarEstado(2)">
+        <div class="estado-icon">🚚</div>
+        <div class="estado-label">Enviado</div>
+      </div>
+    </div>
+
+    <div id="mensaje" class="mensaje">👨‍🍳 Su pedido está en preparación.</div>
+  </div>
+
+  <script>
+    let estados = [
+      { nombre: "Cocinándose", mensaje: "👨‍🍳 Su pedido está en preparación." },
+      { nombre: "Esperando a despacho", mensaje: "⏳ Su pedido ya está listo, a espera de despacho." },
+      { nombre: "Pedido ya enviado", mensaje: "🚚 Su pedido fue enviado, pronto llegará." }
+    ];
+
+    let estadoActual = 0;
+    let interval;
+
+    function mostrarEstado() {
+      // Resetear todos
+      document.querySelectorAll(".estado").forEach(e => e.classList.remove("active"));
+      // Activar el actual
+      document.querySelectorAll(".estado")[estadoActual].classList.add("active");
+      // Mensaje principal
+      document.getElementById("mensaje").innerText = estados[estadoActual].mensaje;
+
+      // Alerts simulando escenarios Esc1 y Esc2
+      if (estadoActual === 1) {
+        alert("Su pedido ya está listo, a espera de despacho");
+      }
+      if (estadoActual === 2) {
+        alert("Pedido ya enviado. ¿Desea ver más detalles?");
+      }
+    }
+
+    function cambiarEstado(index) {
+      estadoActual = index;
+      mostrarEstado();
+      clearInterval(interval); // Si el usuario cambia manualmente, se detiene el auto
+    }
+
+    function avanzarEstado() {
+      if (estadoActual < estados.length - 1) {
+        estadoActual++;
+        mostrarEstado();
+      } else {
+        clearInterval(interval);
+      }
+    }
+
+    // Simulación: cambiar estado automáticamente cada 5s
+    window.onload = () => {
+      mostrarEstado();
+      interval = setInterval(avanzarEstado, 5000);
+    };
+  </script>
+</body>
+</html>
