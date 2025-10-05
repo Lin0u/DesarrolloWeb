@@ -6,127 +6,81 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
+            background-color: #f2f2f2;
             height: 100vh;
-            margin: 0;
-            padding-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .registro {
+            background-color: white;
+            padding: 30px;
+            border: 1px solid #ccc;
+            width: 300px;
+            text-align: left;
         }
 
         h1 {
-            font-size: 22px;
-            margin-bottom: 5px;
-        }
-
-        p {
-            color: gray;
-            margin-bottom: 30px;
-        }
-
-        .register-box {
-            background: white;
-            border: 1px solid #ccc;
-            padding: 30px;
-            width: 320px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-
-        .register-box h2 {
-            font-size: 18px;
+            text-align: center;
             margin-bottom: 10px;
         }
 
         hr {
-            border: none;
-            border-top: 1px solid #ccc;
-            margin: 15px 0;
+            margin-bottom: 20px;
         }
 
-        .input-box {
-            margin-bottom: 15px;
-        }
-
-        .input-box label {
+        label {
             display: block;
             margin-bottom: 5px;
-            font-size: 14px;
         }
 
-        .input-box input {
+        input {
             width: 100%;
-            padding: 8px;
-            font-size: 14px;
+            padding: 6px;
+            margin-bottom: 15px;
             border: 1px solid #ccc;
         }
 
-        .btn {
+        .boton {
             width: 100%;
-            padding: 10px;
-            margin-top: 10px;
+            padding: 8px;
+            background-color: #ddd;
             border: none;
-            font-size: 14px;
-            color: white;
-            background-color: #3ba9f4;
-            cursor: pointer;
         }
 
-        .btn:hover {
-            background-color: #228ad1;
-        }
-
-        .login-link {
-            margin-top: 15px;
+        .link {
             text-align: center;
             font-size: 13px;
-        }
-
-        .login-link a {
-            color: #3ba9f4;
-            text-decoration: none;
-        }
-
-        .login-link a:hover {
-            text-decoration: underline;
+            margin-top: 10px;
+            color: gray;
         }
     </style>
 </head>
 <body>
-    <div class="register-box">
-        <h2>Registro</h2>
+    <div class="registro">
+        <h1>Registro</h1>
         <hr>
+        <form onsubmit="return false;">
+            <label>Nombre de usuario:</label>
+            <input type="text" name="username">
 
-        <form>
-            <div class="input-box">
-                <label for="username">User Name:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
+            <label>Email:</label>
+            <input type="email" name="email">
 
-            <div class="input-box">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+            <label>Contraseña:</label>
+            <input type="password" name="password">
 
-            <div class="input-box">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
+            <label>Confirmar contraseña:</label>
+            <input type="password" name="confirm-password">
 
-            <div class="input-box">
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" required>
-            </div>
+            <input type="button" value="Registrarse" class="boton">
 
-            <button type="submit" class="btn">SIGN UP</button>
-
-            <hr>
-
-            <div class="login-link">
-                <p>¿Ya tienes cuenta? <a href="HTMLlogin.html">Inicia sesión</a></p>
+            <div class="link">
+                <p>¿Ya tienes cuenta? Inicia sesión</p>
             </div>
         </form>
     </div>
 </body>
 </html>
+
